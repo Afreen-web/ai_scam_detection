@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Scam Detection</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            color: white;
+            background: url("https://images.unsplash.com/photo-1550751827-4bd374c3f58b");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .overlay {
+            background: rgba(0,0,0,0.7);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        h1 span { color: red; }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .left-box, .right-box {
+            background: rgba(0,0,0,0.6);
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+        }
+
+        button {
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            margin-top: 5px;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .local { background: green; color: white; width: 50%; }
+        .cloud { background: blue; color: white; width: 50%; }
+
+        .check-btn {
+            width: 100%;
+            background: purple;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #333;
+            margin-top: 10px;
+        }
+
+        #progressFill {
+            height: 10px;
+            width: 0%;
+            background: green;
+        }
+
+        table {
+            width: 90%;
+            margin: auto;
+            margin-top: 20px;
+            border-collapse: collapse;
+            background: rgba(0,0,0,0.6);
+        }
+
+        th, td {
+            border: 1px solid #444;
+            padding: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+    <h1 style="text-align:center;">AI <span>SCAM</span> DETECTION</h1>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <!-- LEFT BOX -->
+        <div class="left-box">
+
+            <textarea id="message"></textarea>
+
+            <!-- MODE BUTTONS -->
+            <div class="btn-row">
+                <button class="local" onclick="setMode('LOCAL AI')">LOCAL AI</button>
+                <button class="cloud" onclick="setMode('CLOUD AI')">CLOUD AI</button>
+            </div>
+
+            <!-- CHECK BUTTON -->
+            <button class="check-btn" onclick="checkMessage()">CHECK</button>
+
+        </div>
+
+        <!-- RIGHT BOX -->
+        <div class="right-box">
+
+            <div id="resultText">--</div>
+            <p id="confidenceText">0%</p>
+
+            <div class="progress-bar">
+                <div id="progressFill"></div>
+            </div>
+
+            <p id="modeText"></p>
+
+        </div>
+
+    </div>
+
+    <!-- HISTORY -->
+    <h3 style="text-align:center;">History</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Message</th>
+                <th>Result</th>
+                <th>Confidence</th>
+                <th>Mode</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+
+        <tbody id="historyTable"></tbody>
+    </table>
+
+    <div class="footer">
+        © 2026 | Final Year Project
+        Developed by Subaita Afreen
+    </div>
+
+</div>
+
+<!-- JS FILE -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
